@@ -33,7 +33,7 @@ addLayer("pt", {
 })
 
 addLayer("p", {
-    name: "prestige", // This is optional, only used in a few places, If absent it just uses the layer id.
+    name: "zero", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
@@ -46,7 +46,7 @@ addLayer("p", {
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.5, // Prestige currency exponent
+    exponent: 1.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -63,7 +63,7 @@ addLayer("p", {
       },
       12: {
         title: "Another Generic Upgrade",
-        description: "Prestige points boost points.",
+        description: "zero points boost points.",
         cost: new Decimal(1),
         effect() { // Calculate bonuses from the upgrade. Can return a single value or an object with multiple values
           let ret = player[this.layer].points.add(1).tetrate(0.5)
